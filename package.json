@@ -1,0 +1,31 @@
+{
+  "name": "facebot",
+  "description": "Posting fake Facebook updates with JavaScript",
+  "version": "0.0.1",
+  "homepage": "http://juancuartas.com/facebot",
+  "author": {
+    "name": "Juan Cuartas",
+    "email": "equisoide@gmail.com",
+    "url": "http://juancuartas.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/equisoide/facebot.git"
+  },
+  "bugs": {
+    "email": "equisoide@gmail.com"
+  },
+  "license": "GNU",
+  "keywords": [
+    "bot",
+    "facebook",
+    "javascript",
+    "joke"
+  ],
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-replace": "^0.5.3",
+    "gulp-uglify": "^1.2.0"
+  }
+}

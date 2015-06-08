@@ -1,0 +1,92 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Facebot</title>
+</head>
+<body>
+	<table style="border:1px solid gray; padding:10px; background:#fafafa;" align="center">
+		<tr>
+			<td colspan="2" style="background:#45619d; color:#ffffff; text-align:center;" height="30px" >
+				Facebot
+			</td>
+		</tr>
+		<tr><td></td><td></td></tr>
+		<tr>
+			<td>Cover image:</td>
+			<td><input type="text" id="cover-image" placeholder="http://" /></td>
+		</tr>
+		<tr>
+			<td>Profile picture:</td>
+			<td><input type="text" id="profile-picture" placeholder="http://" /></td>
+		</tr>
+		<tr>
+			<td>Cover name:</td>
+			<td><input type="text" id="cover-name" /></td>
+		</tr>
+		<tr>
+			<td>Notifications count:</td>
+			<td><input type="number" id="notifications-count" min="1" max="999"/></td>
+		</tr>
+		<tr>
+			<td>Timeline status:</td>
+			<td><input type="text" id="post-status" /></td>
+		</tr>
+		<tr>
+			<td>Timeline image:</td>
+			<td><input type="text" id="post-url" placeholder="http://" /></td>
+		</tr>
+		<tr>
+			<td>Timeline comment #1:</td>
+			<td><input type="text" id="post-comment-1" /></td>
+		</tr>
+		<tr>
+			<td>Timeline comment #2:</td>
+			<td><input type="text" id="post-comment-2" /></td>
+		</tr>
+		<tr>
+			<td>Timeline comment #3:</td>
+			<td><input type="text" id="post-comment-3" /></td>
+		</tr>
+		<tr><td></td><td></td></tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" id="generate" value="Generate Script" style="width:100%;" onclick="generateScript();" />
+			</td>
+		</tr>
+		<tr><td></td><td></td></tr>
+		<tr>
+			<td colspan="2">
+				<div id="hidden-script" style="display: none;">{{script}}</div>
+				<textarea id="visible-script" style="width:98%;" rows="4"></textarea>
+			</td>
+		</tr>
+	</table>
+	<script>
+		var generateScript = function () {
+			var getValue = function (id) {
+				return document.getElementById(id).value;
+			};
+			var getComments = function () {
+				return getValue("post-comment-1") + "|" +
+			           getValue("post-comment-2") + "|" +
+			           getValue("post-comment-3");
+			};
+			var getScript = function () {
+				var script = document.getElementById('hidden-script').innerText;
+				script = script.replace("{{coverImage}}",         getValue("cover-image"));
+				script = script.replace("{{profilePicture}}",     getValue("profile-picture"));
+				script = script.replace("{{coverName}}",          getValue("cover-name"));
+				script = script.replace("{{notificationsCount}}", getValue("notifications-count"));
+				script = script.replace("{{postStatus}}",         getValue("post-status"));
+				script = script.replace("{{postUrl}}",            getValue("post-url"));
+				script = script.replace("{{postComments}}",       getComments());
+				return script.trim();
+			}
+			var textArea = document.getElementById('visible-script');
+			textArea.value = getScript();
+			textArea.select();
+		};
+	</script>
+</body>
+</html>
