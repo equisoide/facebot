@@ -14,5 +14,5 @@ See the full article here:
 
 ## Copyright and license
 
-Code and documentation released under [the GNU license](https://github.com/equisoide/facebot/blob/master/LICENSE)
+Code released under [the GNU license](https://github.com/equisoide/facebot/blob/master/LICENSE)
 
